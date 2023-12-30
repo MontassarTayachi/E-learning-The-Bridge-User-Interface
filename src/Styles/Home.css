@@ -1,0 +1,44 @@
+.cover{
+    background: linear-gradient(rgba(31, 21, 1, 0.411), rgba(24, 15, 2, 0.3)), url(../assets/img/images.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	width: 100%;
+	height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    
+}
+
+
+  
+  .bri {
+    text-align: center; 
+    background-color: #ffffff8a;
+    padding: 30px;
+    color: black;
+  }
+  
+  .bri p {
+    font-size: 2em; 
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  
+  .bri button {
+    padding: 10px 20px;
+    font-size: 1.3em; 
+    border: none; 
+    background-color: #af2f64;
+    color: #fff;
+    border-radius: 30px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+  }
+  
+  .bri button:hover {
+    background-color:#e7166d57; 
+  }
+  
