@@ -1,6 +1,6 @@
 ﻿# E-learning-The-Bridge-User-Interface-
-## Projet E-Learning BeeCoders: La Plateforme d'Apprentissage "The Bridge"
-Ce projet vise à développer une plateforme d'apprentissage en ligne appelée "The Bridge", intégrant une page d'accueil attrayante et une interface d'administration robuste. Les technologies utilisées pour la réalisation du projet sont SpringBoot pour le backend, Angular/Node/React/Flutter pour le frontend.
+## Projet E-Learning : La Plateforme d'Apprentissage "The Bridge"
+Ce projet vise à développer une plateforme d'apprentissage en ligne appelée "The Bridge", intégrant une page d'accueil attrayante et une interface d'administration robuste. Les technologies utilisées pour la réalisation du projet sont Node pour le backend, React pour le frontend.
 
 ## Page d'Accueil
 La page d'accueil a été conçue pour offrir une expérience utilisateur engageante. En se basant sur l'interface fournie, la disposition a été soigneusement élaborée, mettant l'accent sur le design et l'ergonomie. Les technologies frontend choisies ont été intégrées de manière optimale pour assurer une navigation fluide et une présentation visuelle attractive.
