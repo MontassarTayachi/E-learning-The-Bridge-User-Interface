@@ -1,4 +1,4 @@
-﻿# E-learning-The-Bridge-User-Interface-
+﻿# E-learning-The-Bridge-User-Interface
 ## Projet E-Learning : La Plateforme d'Apprentissage "The Bridge"
 Ce projet vise à développer une plateforme d'apprentissage en ligne appelée "The Bridge", intégrant une page d'accueil attrayante et une interface d'administration robuste. Les technologies utilisées pour la réalisation du projet sont Node pour le backend, React pour le frontend.
 
