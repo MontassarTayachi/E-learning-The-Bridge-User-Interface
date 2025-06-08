@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bridge - Projet E-Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            border: 2px solid #fff;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #667eea;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 2rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .image-container {
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: scale(1.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateX(10px);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            margin-top: 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .project-card {
+                padding: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle">
+        <button class="lang-btn active" onclick="switchLanguage('fr')">FR</button>
+        <button class="lang-btn" onclick="switchLanguage('en')">EN</button>
+    </div>
+
+    <div class="container">
+        <!-- Contenu Français -->
+        <div id="content-fr">
+            <div class="hero-section">
+                <h1 class="hero-title">The Bridge</h1>
+                <p class="hero-subtitle">Plateforme E-Learning Moderne</p>
+            </div>
+
+            <div class="project-card">
+                <h2 class="section-title">À Propos du Projet</h2>
+                <p class="description">
+                    Ce projet vise à développer une plateforme d'apprentissage en ligne appelée "The Bridge", 
+                    intégrant une page d'accueil attrayante et une interface d'administration robuste. 
+                    Une solution complète qui révolutionne l'expérience d'apprentissage en ligne.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">UI/UX Design</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2 class="section-title">Fonctionnalités Principales</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">Page d'Accueil Moderne</h3>
+                        <p>Interface utilisateur engageante avec un design soigné et une navigation fluide pour une expérience optimale.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Interface d'Administration</h3>
+                        <p>Panneau de contrôle robuste permettant une gestion complète de la plateforme et des utilisateurs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Design Responsive</h3>
+                        <p>Optimisé pour tous les appareils avec une approche mobile-first et une expérience cohérente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Performance Optimisée</h3>
+                        <p>Architecture technique moderne garantissant rapidité et fluidité d'utilisation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2 class="section-title">Aperçu Visuel</h2>
+                <div class="image-container">
+                    <img src="https://github.com/MontassarTayachi/E-learning-The-Bridge-User-Interface-/assets/132301258/28db186b-db8c-4991-80bd-1b6aee18a4e6" 
+                         alt="Capture d'écran de l'interface The Bridge" 
+                         class="project-image">
+                </div>
+                <p class="description">
+                    La page d'accueil a été conçue pour offrir une expérience utilisateur engageante. 
+                    En se basant sur l'interface fournie, la disposition a été soigneusement élaborée, 
+                    mettant l'accent sur le design et l'ergonomie.
+                </p>
+            </div>
+
+            <div class="cta-section">
+                <h2 style="color: white; margin-bottom: 1rem;">Découvrir Plus de Projets</h2>
+                <a href="#" class="cta-button">Voir le Portfolio Complet</a>
+            </div>
+        </div>
+
+        <!-- Contenu Anglais -->
+        <div id="content-en" class="hidden">
+            <div class="hero-section">
+                <h1 class="hero-title">The Bridge</h1>
+                <p class="hero-subtitle">Modern E-Learning Platform</p>
+            </div>
+
+            <div class="project-card">
+                <h2 class="section-title">About the Project</h2>
+                <p class="description">
+                    This project aims to develop an online learning platform called "The Bridge", 
+                    integrating an attractive homepage and a robust administration interface. 
+                    A complete solution that revolutionizes the online learning experience.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">UI/UX Design</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2 class="section-title">Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3 class="feature-title">Modern Homepage</h3>
+                        <p>Engaging user interface with careful design and smooth navigation for an optimal experience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Administration Interface</h3>
+                        <p>Robust control panel allowing complete management of the platform and users.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Responsive Design</h3>
+                        <p>Optimized for all devices with a mobile-first approach and consistent experience.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3 class="feature-title">Optimized Performance</h3>
+                        <p>Modern technical architecture ensuring speed and smooth usage.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h2 class="section-title">Visual Overview</h2>
+                <div class="image-container">
+                    <img src="https://github.com/MontassarTayachi/E-learning-The-Bridge-User-Interface-/assets/132301258/28db186b-db8c-4991-80bd-1b6aee18a4e6" 
+                         alt="Screenshot of The Bridge interface" 
+                         class="project-image">
+                </div>
+                <p class="description">
+                    The homepage has been designed to offer an engaging user experience. 
+                    Based on the provided interface, the layout has been carefully crafted, 
+                    emphasizing design and ergonomics.
+                </p>
+            </div>
+
+            <div class="cta-section">
+                <h2 style="color: white; margin-bottom: 1rem;">Discover More Projects</h2>
+                <a href="#" class="cta-button">View Complete Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            const frContent = document.getElementById('content-fr');
+            const enContent = document.getElementById('content-en');
+            const langButtons = document.querySelectorAll('.lang-btn');
+
+            // Supprimer la classe active de tous les boutons
+            langButtons.forEach(btn => btn.classList.remove('active'));
+
+            if (lang === 'fr') {
+                frContent.classList.remove('hidden');
+                enContent.classList.add('hidden');
+                document.querySelector('[onclick="switchLanguage(\'fr\')"]').classList.add('active');
+                document.documentElement.lang = 'fr';
+            } else {
+                enContent.classList.remove('hidden');
+                frContent.classList.add('hidden');
+                document.querySelector('[onclick="switchLanguage(\'en\')"]').classList.add('active');
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        // Animation au chargement
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
